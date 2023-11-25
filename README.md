@@ -8,3 +8,12 @@
 這本手冊由 114 屆專題生共同編輯
 
 [mdbook](https://rust-lang.github.io/mdBook)
+
+install mdbook
+```
+cargo install mdbook
+```
+
+```
+mdbook buiild
+```
