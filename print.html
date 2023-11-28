@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded "><a href="container-101/index.html"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded "><a href="container-101/index.html"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="kubernetes/index.html"><strong aria-hidden="true">2.</strong> kubernetes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kubernetes/helm/helm.html"><strong aria-hidden="true">2.1.</strong> helm</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -152,6 +152,11 @@
 <p><img src="./outline.jpg" alt="outline" /></p>
 <p>這本手冊由 114 屆專題生共同編輯</p>
 <p><a href="https://rust-lang.github.io/mdBook">mdbook</a></p>
+<p>install mdbook</p>
+<pre><code>cargo install mdbook
+</code></pre>
+<pre><code>mdbook buiild
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><p>slide: https://docs.google.com/presentation/d/1ob96PoG-oqNVKN8I-blmYdaf3njAoY7SbCDEcI1Qq-s</p>
 <div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h2 id="cgroupv1"><a class="header" href="#cgroupv1">Cgroupv1</a></h2>
 <p>有多個控制器，可以針對不同的資源進行管理（memory,CPU...）</p>
@@ -307,6 +312,73 @@ libpod-1d16e5700bb207936a96b02cfe929fa161e5685aa15186f4c8be5dc44821b860.scope/
 machine-libpod_pod_&lt;pid&gt;.slice/libpod-&lt;pid&gt;.scope/ 
 machine-libpod_pod_&lt;pid&gt;.slice/libpod-conmon-&lt;pid&gt;.scope/ 
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><div style="break-before: page; page-break-before: always;"></div><h1 id="the-package-manager-for-kubernetes"><a class="header" href="#the-package-manager-for-kubernetes">The package manager for kubernetes</a></h1>
+<h2 id="three-big-concepts"><a class="header" href="#three-big-concepts">Three Big Concepts</a></h2>
+<ul>
+<li>A Chart is a Helm package.</li>
+<li>A Repository is the place where charts can be collected and shared. It's like Perl's CPAN archive or the Fedora Package Database, but for Kubernetes packages.- A Release is an instance of a chart running in a Kubernetes cluster.</li>
+</ul>
+<h2 id="quickstart"><a class="header" href="#quickstart">Quickstart</a></h2>
+<p>install helm</p>
+<p>helm search</p>
+<pre><code>helm search hub
+helm search repo
+</code></pre>
+<p>Initialize a Helm Chart Repository</p>
+<pre><code>helm repo add bitnami https://charts.bitnami.com/bitnami
+</code></pre>
+<h2 id="helm-tips"><a class="header" href="#helm-tips">helm tips</a></h2>
+<h3 id="install-加上---dry-run"><a class="header" href="#install-加上---dry-run">install 加上 --dry-run</a></h3>
+<h2 id="helm-features"><a class="header" href="#helm-features">helm features</a></h2>
+<ul>
+<li>pure client tools (v3)
+<ul>
+<li>w/o tiller</li>
+<li>don't need helm init</li>
+</ul>
+</li>
+<li>3-way merge</li>
+<li>helm template
+<ul>
+<li>values.yaml</li>
+</ul>
+</li>
+<li>dependency</li>
+</ul>
+<h2 id="hub"><a class="header" href="#hub">hub</a></h2>
+<ul>
+<li>more then helm</li>
+</ul>
+<h2 id="repo"><a class="header" href="#repo">repo</a></h2>
+<h2 id="charts"><a class="header" href="#charts">charts</a></h2>
+<h3 id="chart-hooks"><a class="header" href="#chart-hooks">chart hooks</a></h3>
+<ul>
+<li>(pre/post)-(install/delete/upgrade/rollback) / test</li>
+</ul>
+<h2 id="helm-plugins"><a class="header" href="#helm-plugins">helm plugins</a></h2>
+<p>https://helm.sh/docs/community/related/#helm-plugins</p>
+<h3 id="helm-secrets--diff---git"><a class="header" href="#helm-secrets--diff---git">helm secrets / diff /  git</a></h3>
+<p>https://www.youtube.com/watch?v=FriVNkaEU8Q
+sops </p>
+<h3 id=""><a class="header" href="#"></a></h3>
+<h2 id="web-ui"><a class="header" href="#web-ui">web ui</a></h2>
+<ul>
+<li>kubeapps
+<ul>
+<li>https://kubeapps.dev/docs/latest/tutorials/getting-started/#step-1-install-kubeapps</li>
+<li>kubectl port-forward --address=100.115.92.200 -n kubeapps svc/kubeapps 8080:80 </li>
+</ul>
+</li>
+<li>helm-dashboard</li>
+</ul>
+<h2 id="tilt--werf"><a class="header" href="#tilt--werf">tilt / werf</a></h2>
+<h2 id="flux--argocd"><a class="header" href="#flux--argocd">flux / argocd</a></h2>
+<ul>
+<li>helm operator</li>
+</ul>
+<h2 id="keptn"><a class="header" href="#keptn">keptn</a></h2>
+<h2 id="gitops"><a class="header" href="#gitops">GitOps</a></h2>
+<h2 id="argo-workflow-"><a class="header" href="#argo-workflow-">argo workflow /</a></h2>
 
                     </main>
 
