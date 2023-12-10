@@ -8,3 +8,4 @@
     - [v2](./container-101/cgroup/cgroup_v2.md)
 - [kubernetes](./kubernetes/README.md)
   - [helm](./kubernetes/helm/helm.md)
+- [cicd](./cicd/cicd.md)
