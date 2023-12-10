@@ -15,5 +15,5 @@ cargo install mdbook
 ```
 
 ```
-mdbook buiild
+mdbook build
 ```
