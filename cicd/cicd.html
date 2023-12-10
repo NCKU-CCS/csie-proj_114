@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Container 101</title>
+        <title>cicd</title>
                 
 
         <!-- Custom HTML head -->
@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">README</a></li><li class="chapter-item expanded "><a href="../container-101/index.html" class="active"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="../container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">2.</strong> kubernetes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm/helm.html"><strong aria-hidden="true">2.1.</strong> helm</a></li></ol></li><li class="chapter-item expanded "><a href="../cicd/cicd.html"><strong aria-hidden="true">3.</strong> cicd</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">README</a></li><li class="chapter-item expanded "><a href="../container-101/index.html"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="../container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../kubernetes/index.html"><strong aria-hidden="true">2.</strong> kubernetes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kubernetes/helm/helm.html"><strong aria-hidden="true">2.1.</strong> helm</a></li></ol></li><li class="chapter-item expanded "><a href="../cicd/cicd.html" class="active"><strong aria-hidden="true">3.</strong> cicd</a></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -143,19 +143,188 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p>slide: https://docs.google.com/presentation/d/1ob96PoG-oqNVKN8I-blmYdaf3njAoY7SbCDEcI1Qq-s</p>
+                        <h1 id="cicd"><a class="header" href="#cicd">CI/CD</a></h1>
+<h2 id="software-development-life-cycle-sdlc-waterfall-vs-agile"><a class="header" href="#software-development-life-cycle-sdlc-waterfall-vs-agile">Software Development Life Cycle (SDLC) [Waterfall vs agile]</a></h2>
+<ul>
+<li>Analysis</li>
+<li>Design</li>
+<li>Implementation</li>
+<li>Quality Assurance</li>
+<li>Deployment</li>
+<li>Support &amp; Maintenance</li>
+</ul>
+<h2 id="cicd-1"><a class="header" href="#cicd-1">CI/CD</a></h2>
+<p><img src="https://blog.mergify.com/content/images/2022/03/CI-CD-infinity-copy-1.jpg" alt="cicd" /></p>
+<ul>
+<li>Plan - doc / issue</li>
+<li>[git] Code</li>
+<li>[ci] * Build</li>
+<li>[ci] * Test</li>
+<li>[ci] * Release [github release]</li>
+<li>[cd] Deploy [IaC / apps store]</li>
+<li>[cd] Operate [controller / gitops / chatops]</li>
+<li>[cd] Monitor [health check]</li>
+</ul>
+<h2 id="continuous-integration"><a class="header" href="#continuous-integration">Continuous integration</a></h2>
+<ul>
+<li>version control
+<ul>
+<li>commit message [check]</li>
+</ul>
+</li>
+<li>build</li>
+<li>automated testing
+<ul>
+<li>lint</li>
+<li>unittest</li>
+<li>integration test</li>
+<li>end-to-end test</li>
+</ul>
+</li>
+</ul>
+<h2 id="continuous-delivery--deployment"><a class="header" href="#continuous-delivery--deployment">Continuous delivery / deployment</a></h2>
+<ul>
+<li>Deploy
+<ul>
+<li>Infrastructure as Code (IaC) / gitops
+<ul>
+<li>ansible (netdb) https://gitlab.com/19gale.ai/netdb-playbook</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Operate
+<ul>
+<li>k8s controller / operator</li>
+<li>chatops</li>
+<li>OTA</li>
+<li>A/B Testing</li>
+</ul>
+</li>
+<li>Monitor
+<ul>
+<li>dashboard / health check</li>
+<li>gatus</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://codilime.com/static/434aed9e5736a625a9057f0b8fe6c325/701e9/day0-day1-day2-blogpost-new.png" alt="Day 0/Day 1/Day 2 " /></p>
+<h2 id="tools"><a class="header" href="#tools">tools</a></h2>
+<h3 id="version-control"><a class="header" href="#version-control">version control</a></h3>
+<ul>
+<li>
+<p>git</p>
+</li>
+<li>
+<p>github pull request (PR) / gitlab merge request (MR)</p>
+<ul>
+<li>merge commit</li>
+<li>squash</li>
+<li>relation with issue tracker</li>
+</ul>
+</li>
+<li>
+<p>gitflow https://nvie.com/posts/a-successful-git-branching-model/</p>
+<ul>
+<li>develop / feature / main / release / hotfixes</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://nvie.com/img/git-model@2x.png" alt="gitflow" /></p>
+<h3 id="ci-tools"><a class="header" href="#ci-tools">CI tools</a></h3>
+<ul>
+<li>git trigger (webhook)</li>
+<li>worker
+<ul>
+<li>pipeline</li>
+</ul>
+</li>
+</ul>
+<h4 id="ci-tools-type"><a class="header" href="#ci-tools-type">ci tools type</a></h4>
+<h5 id="job-base-jenkins"><a class="header" href="#job-base-jenkins">job base (jenkins)</a></h5>
+<ul>
+<li>agent (java based) / worker setup</li>
+<li>Groovy script</li>
+<li>https://www.jenkins.io/doc/pipeline/examples/</li>
+<li>plugins</li>
+</ul>
+<h5 id="code-pipeline-base-gitlab-cicircle-ci"><a class="header" href="#code-pipeline-base-gitlab-cicircle-ci">code pipeline base (gitlab ci/circle ci)</a></h5>
+<ul>
+<li>.gitlab-ci.yml</li>
+<li>rules - Use the rules keyword to specify when to run or skip jobs.</li>
+<li>cache / artifacts - Keep information across jobs and stages persistent in a pipeline with cache and artifacts. These keywords are ways to store dependencies and job output, even when using ephemeral runners for each job. </li>
+</ul>
+<p><img src="https://docs.gitlab.com/ee/ci/quick_start/img/pipeline_graph_v13_6.png" alt="gitlab pipeline" /></p>
+<pre><code>build-job:
+  stage: build
+  script:
+    - echo &quot;Hello, $GITLAB_USER_LOGIN!&quot;
+
+test-job1:
+  stage: test
+  script:
+    - echo &quot;This job tests something&quot;
+
+test-job2:
+  stage: test
+  script:
+    - echo &quot;This job tests something, but takes more time than test-job1.&quot;
+    - echo &quot;After the echo commands complete, it runs the sleep command for 20 seconds&quot;
+    - echo &quot;which simulates a test that runs 20 seconds longer than test-job1&quot;
+    - sleep 20
+
+deploy-prod:
+  stage: deploy
+  script:
+    - echo &quot;This job deploys something from the $CI_COMMIT_BRANCH branch.&quot;
+  environment: production
+</code></pre>
+<h5 id="ci-market-github-action"><a class="header" href="#ci-market-github-action">ci market (github action)</a></h5>
+<ul>
+<li>.github/workflows/xx.yml</li>
+</ul>
+<pre><code>name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo &quot;🎉 The job was automatically triggered by a ${{ github.event_name }} event.&quot;
+      - run: echo &quot;🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!&quot;
+      - run: echo &quot;🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}.&quot;
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo &quot;💡 The ${{ github.repository }} repository has been cloned to the runner.&quot;
+      - run: echo &quot;🖥️ The workflow is now ready to test your code on the runner.&quot;
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo &quot;🍏 This job's status is ${{ job.status }}.&quot;
+</code></pre>
+<ul>
+<li>local github action - act https://github.com/nektos/act</li>
+</ul>
+<h3 id="k8s-and-gitops"><a class="header" href="#k8s-and-gitops">k8s and gitops</a></h3>
+<p><img src="https://dz2cdn1.dzone.com/storage/temp/16239206-picture4.png" alt="GitOps" /></p>
+<ul>
+<li>tilt https://docs.tilt.dev/controlloop</li>
+<li>prod
+<ul>
+<li>argocd</li>
+<li>fluxcd</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                                                    <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                                    <a rel="prev" href="../kubernetes/helm/helm.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
-                                                    <a rel="next" href="../container-101/cgroup/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
                         <div style="clear: both"></div>
                     </nav>
@@ -163,13 +332,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                    <a rel="prev" href="../kubernetes/helm/helm.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
-                                    <a rel="next" href="../container-101/cgroup/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                             </nav>
 
         </div>
