@@ -38,6 +38,7 @@
  - Deploy
    - Infrastructure as Code (IaC) / gitops
      - ansible (netdb) https://gitlab.com/19gale.ai/netdb-playbook
+     - https://k21academy.com/ansible/terraform-vs-ansible/
  - Operate
    - k8s controller / operator
    - chatops
