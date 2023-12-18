@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: ymh-backend
+   namespace: ymh-webapp
+spec:
+   selector:
+     app: ymh-backend
+   type:  NodePort
+   ports:
+     - protocol: TCP
+       port: 8000
+       targetPort: 8000
+       nodePort: 31426
+

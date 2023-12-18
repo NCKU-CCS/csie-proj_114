@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+   name: ymh-frontend
+   namespace: ymh-webapp
+spec:
+   selector:
+     app: ymh-frontend
+   type: NodePort
+   ports:
+     - protocol: TCP
+       port: 3000
+       targetPort: 3000
+       nodePort: 31425

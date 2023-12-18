@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ymh-frontend
+  namespace: ymh-webapp
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ymh-frontend
+    spec:
+      containers:
+        - name: ymh-frontend
+          image: ymh636/ymh-frontend
+          ports:
+            - containerPort: 3000
+  selector:
+    matchLabels:
+      app: ymh-frontend
