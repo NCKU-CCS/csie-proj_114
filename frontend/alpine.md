@@ -21,7 +21,7 @@
 <!-- column: 1 -->
 
 <!-- pause -->
-- Don't need bundle or build tooling
+- Don't need to bundle or build tooling
 <!-- pause -->
   -  `defer`: parallel downloading & executed after the page has finished parsing.
 <!-- pause -->
