@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded "><a href="container-101/index.html"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="kubernetes/index.html"><strong aria-hidden="true">2.</strong> kubernetes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kubernetes/helm/helm.html"><strong aria-hidden="true">2.1.</strong> helm</a></li></ol></li><li class="chapter-item expanded "><a href="cicd/cicd.html"><strong aria-hidden="true">3.</strong> cicd</a></li></ol>            </div>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">README</a></li><li class="chapter-item expanded "><a href="container-101/index.html"><strong aria-hidden="true">1.</strong> Container 101</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/index.html"><strong aria-hidden="true">1.1.</strong> cgroup</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="container-101/cgroup/simple.html"><strong aria-hidden="true">1.1.1.</strong> simple</a></li><li class="chapter-item expanded "><a href="container-101/cgroup/cgroup_v2.html"><strong aria-hidden="true">1.1.2.</strong> v2</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="kubernetes/index.html"><strong aria-hidden="true">2.</strong> kubernetes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kubernetes/helm/helm.html"><strong aria-hidden="true">2.1.</strong> helm</a></li></ol></li><li class="chapter-item expanded "><a href="cicd/cicd.html"><strong aria-hidden="true">3.</strong> cicd</a></li><li class="chapter-item expanded "><a href="frontend/index.html"><strong aria-hidden="true">4.</strong> frontend</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="frontend/alpine.html"><strong aria-hidden="true">4.1.</strong> alpine</a></li></ol></li></ol>            </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
 
@@ -553,6 +553,219 @@ jobs:
 </ul>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div><p>frontend</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="alpinejs---your-new-lightweight-javascript-framework"><a class="header" href="#alpinejs---your-new-lightweight-javascript-framework">Alpine.js - Your new, lightweight, JavaScript framework.</a></h1>
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+<pre><code class="language-html">&lt;script src=&quot;alpine.js&quot; defer&gt;
+&lt;/script&gt;
+&lt;div x-data=&quot;{ open: false }&quot;&gt;
+    &lt;button @click=&quot;open = true&quot;&gt;
+      Expand
+    &lt;/button&gt;
+ 
+    &lt;span x-show=&quot;open&quot;&gt;
+        Content...
+    &lt;/span&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- column: 1 -->
+<!-- pause -->
+<ul>
+<li>Don't need bundle or build tooling</li>
+</ul>
+<!-- pause -->
+<ul>
+<li><code>defer</code>: parallel downloading &amp; executed after the page has finished parsing.</li>
+</ul>
+<!-- pause -->
+<ul>
+<li>simple - js version TailwindCSS</li>
+</ul>
+<!-- pause -->
+<ul>
+<li>18 directives / attributes</li>
+<li>9 magics / properties</li>
+<li>3 globals / methods.</li>
+</ul>
+<!-- pause -->
+<ul>
+<li>lightweight - cdn 43k/16k(gz)</li>
+</ul>
+<!-- pause -->
+<ul>
+<li>Vue reactivity system</li>
+<li>extensions / plugins / components</li>
+</ul>
+<!-- reset_layout -->
+<!--end_slide-->
+<h2 id="doc--components"><a class="header" href="#doc--components">Doc &amp; Components</a></h2>
+<p>Doc:</p>
+<ul>
+<li><a href="https://alpinejs.dev/start-here">Alpine</a></li>
+<li><a href="https://hackmd.io/@monkenWu/S14j-NqsU">Alpine.js 繁體中文文件</a> 中文文件v2</li>
+<li><a href="https://www.codemotion.com/magazine/frontend/ten-reasons-why-i-think-alpine-js-can-do-magic/">10_reasons</a></li>
+<li><a href="https://medium.com/@jogarcia/alpinejs-for-the-vuejs-developer-5b39fd21c2c1">from_vue</a></li>
+</ul>
+<hr />
+<p>Components:</p>
+<ul>
+<li><a href="https://alpinejs.dev/components">Alpine UI Components</a> </li>
+<li><a href="https://www.alpinetoolbox.com/">Toolbox</a></li>
+<li><a href="https://js.hyperui.dev/">HyperUI</a></li>
+</ul>
+<!-- end_slide -->
+<h3 id="x-data---defines-reactive-data-for-that-component-to-reference"><a class="header" href="#x-data---defines-reactive-data-for-that-component-to-reference">x-data - defines reactive data for that component to reference.</a></h3>
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+<pre><code class="language-html">&lt;div x-data=&quot;{
+    foo: 'bar',
+    open: false,
+    get isOpen() { return this.open },
+    toggle() {
+      this.open = ! this.open
+    }
+  }&quot;&gt;
+  &lt;span x-text=&quot;foo&quot;&gt;&lt;/span&gt;
+  &lt;div x-data=&quot;{ bar: 'baz' }&quot;&gt;
+    &lt;span x-text=&quot;foo&quot;&gt;&lt;/span&gt;
+    &lt;div x-data=&quot;{ foo: 'bob' }&quot;&gt;
+      &lt;span x-text=&quot;foo&quot;&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button @click=&quot;toggle()&quot;&gt;Toggle&lt;/button&gt;
+  &lt;div x-show=&quot;isOpen&quot;&gt;
+    Content...
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<!-- column: 1 -->
+<ul>
+<li>Scope - available to all element children (even nested)
+<ul>
+<li>Single-element components</li>
+</ul>
+</li>
+<li>Methods
+<ul>
+<li>x-data is evaluated as a normal JavaScript object</li>
+<li>Getters
+<ul>
+<li><code>get isOpen() { return this.open }</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Data-less components
+<ul>
+<li><code>&lt;div x-data&gt;</code></li>
+</ul>
+</li>
+</ul>
+<!--end_slide-->
+<h2 id="compare-to-other-frameworks"><a class="header" href="#compare-to-other-frameworks">compare to other frameworks</a></h2>
+<ul>
+<li>vs React - (-) JSX (-) VDOM (-) SPA</li>
+<li>vs Vue - (-) VDOM (-) SPA
+<ul>
+<li>(=) template-wise (=) MPA (=) Reactivity</li>
+<li>(*) component scope</li>
+</ul>
+</li>
+<li>vs htmx(*) - (-) make HTTP requests/response (=) MPA</li>
+<li>vs astrojs(*)/nextjs - (-) SSG/SSR (=) MPA</li>
+</ul>
+<!--end_slide-->
+<h3 id="vs-react"><a class="header" href="#vs-react">vs React</a></h3>
+<pre><code>const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(&lt;h1&gt;Hello, world!&lt;/h1&gt;);
+
+function MyButton() {
+  return (
+    &lt;button&gt;I'm a button&lt;/button&gt;
+  );
+}
+</code></pre>
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+<pre><code>&lt;div&gt;
+  {isLoggedIn ? (
+    &lt;AdminPanel /&gt;
+  ) : (
+    &lt;LoginForm /&gt;
+  )}
+&lt;/div&gt;
+</code></pre>
+<!-- column: 1 -->
+<ul>
+<li>JSX</li>
+</ul>
+<!-- reset_layout -->
+<!--end_slide-->
+<h3 id="vs-vue"><a class="header" href="#vs-vue">vs Vue</a></h3>
+<ul>
+<li>重新認識 Vue.js 008 天絕對看不完的 Vue.js 3.0 指南 https://book.vue.tw/</li>
+<li>簡化版 vue, petite-vue</li>
+</ul>
+<pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const msg = ref('Hello World!')
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;h1&gt;{{ msg }}&lt;/h1&gt;
+  &lt;input v-model=&quot;msg&quot; /&gt;
+&lt;/template&gt;
+</code></pre>
+<!--end_slide-->
+<h3 id="vs-htmx"><a class="header" href="#vs-htmx">vs htmx</a></h3>
+<pre><code>  &lt;script src=&quot;https://unpkg.com/htmx.org@1.9.10&quot;&gt;&lt;/script&gt;
+  &lt;!-- have a button POST a click via AJAX --&gt;
+  &lt;button hx-post=&quot;/clicked&quot; hx-swap=&quot;outerHTML&quot;&gt;
+    Click Me
+  &lt;/button&gt;
+</code></pre>
+<ul>
+<li>to AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, using attributes</li>
+<li>simplicity and power of hypertext</li>
+</ul>
+<!--end_slide-->
+<h3 id="vs-astrojs"><a class="header" href="#vs-astrojs">vs astrojs</a></h3>
+<!-- column_layout: [1, 1] -->
+<!-- column: 0 -->
+<ul>
+<li>Component Islands</li>
+<li>Zero JavaScript - Input JS Output Html</li>
+<li>Highly customizable</li>
+<li>UI- agnostic (meaning it is interoperable with a lot of UI frameworks)</li>
+<li>Server-first API (SSR/SSG)
+<ul>
+<li>Server Side Rendering</li>
+<li>Static Site Generator</li>
+</ul>
+</li>
+<li>Edge ready</li>
+</ul>
+<!-- column: 1 -->
+<pre><code>---
+const pageTitle = &quot;About Me&quot;;
+---  
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot; /&gt;
+    &lt;title&gt;{pageTitle}&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+   ...
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<!-- reset_layout -->
+<!--end_slide-->
+<p>old school is coming back...</p>
+<!-- pause -->
+<p>TALL stack - Tailwind CSS / AlpineJS / Laravel / Livewire</p>
 
                     </main>
 
