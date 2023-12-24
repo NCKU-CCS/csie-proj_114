@@ -1,7 +1,7 @@
 
 input by normal user
 ```
-unshare --user --map-root-user --pid --mount --fork 
+unshare --user --map-root-user --pid --mount --fork
 ```
 
 ```
@@ -36,3 +36,51 @@ lrwxrwxrwx 1 shawn111 shawn111 0 Oct  3 17:51 time_for_children -> 'time:[402653
 lrwxrwxrwx 1 shawn111 shawn111 0 Oct  3 17:50 user -> 'user:[4026532478]'
 lrwxrwxrwx 1 shawn111 shawn111 0 Oct  3 17:50 uts -> 'uts:[4026532304]'
 ```
+
+
+
+Unshare is used to create new namespace
+```
+#sudo unshare -u
+```
+
+Shows your current hostname
+```
+#hostname
+ubuntu
+```
+
+Change your current hostname
+```
+#hostname hello
+#hostname
+hello
+```
+
+But when you open a new tab, and check the host name
+```
+#hostname
+ubuntu
+```
+
+To see the namespace of the current terminal
+```
+#ls /proc/$$/ns
+cgroup  ipc  mnt  net  pid  pid_for_children  user  uts
+#readlink /proc/$$/ns/uts
+uts:[4026532341]
+```
+
+But at the other terminal you opened
+```
+#readlink /proc/$$/ns/uts
+uts:[4026531838]
+```
+The uts is different!
+Meaning it is at different UTS namespace.
+However, if we check the mount namespace, it is the same.
+```
+#readlink /proc/$$/ns/mnt
+mnt:[4026531840]
+```
+This is because it is mounted on the same mount point. It is just separated under the point.
