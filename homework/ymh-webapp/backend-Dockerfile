@@ -1,0 +1,13 @@
+FROM python:3.10
+
+WORKDIR /app
+
+COPY . /app
+
+RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
+EXPOSE 8000
+
+ENV DATABASE_URL="postgresql://postgres:postgresmaster@ymh-postgresql-0/test"
+
+CMD ["sh", "-c", "cd backend && uvicorn main:app --proxy-headers --host 0.0.0.0 --port 8000"]
+
