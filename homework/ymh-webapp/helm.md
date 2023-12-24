@@ -1,4 +1,4 @@
-##Helm 裝 Postgres 我的作法
+## Helm 裝 Postgres 我的作法
 
 1. 在本地端裝postgres
     
