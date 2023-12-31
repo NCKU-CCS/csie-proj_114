@@ -1,3 +1,19 @@
+---
+title: Alpine.js - old school is coming back...
+author: Shawn Wang
+theme:
+  name: dark
+  override:
+    default:
+      colors:
+        foreground: "beeeff"
+    footer:
+      style: template
+      center: "NCKU-CCS"
+      right: "🚀 {current_slide} / {total_slides}"
+      # Optional!
+---
+
 # Alpine.js - Your new, lightweight, JavaScript framework.
 
 <!-- column_layout: [1, 1] -->
